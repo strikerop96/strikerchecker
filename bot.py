@@ -39,7 +39,7 @@ rnd = ''.join(random.choices(string.ascii_lowercase +
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "Hey! I am a CC-Checker bot with a few extras. Send /cmds for a list of all commands! Bot By @strikermarket" 
+        "<b>Hey! Wassup</b> <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>\n<b>Send /cmds for a list of all commands!\n \n<b>My Master →@strikerop95</b>\n<b>Bot By @strikermarket</b>" 
     )
     
 
