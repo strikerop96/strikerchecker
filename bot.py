@@ -47,7 +47,7 @@ async def helpstr(message: types.Message):
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "<b>STRIKERCHECKER COMMANDS</b> <b>➣ Stripe Charge/Auth [✅]</b> <code>/chk cc|mm|yy|cvv</code> <b>➣ Check SK Key [✅]</b> <code>/key sk_live</code> <b>➣ Check Info [✅]</b> <code>/info</code> <b>➣ Check BIN Info [✅]</b> <code>/bin xxxxxx</code> Contact → @strikerop95 <b>Bot By @strikermarket</b>"
+        "<b>STRIKERCHECKER COMMANDS</b>\n<b>➣ Stripe Charge/Auth [✅]</b> <code>/chk cc|mm|yy|cvv</code>\n<b>➣ Check SK Key [✅]</b> <code>/key sk_live</code>\n<b>➣ Check Info [✅]</b> <code>/info</code>\n<b>➣ Check BIN Info [✅]</b> <code>/bin xxxxxx</code>\n<b>Contact → @strikerop95</b>\n<b>Bot By @strikermarket</b>"
     )
 
     
