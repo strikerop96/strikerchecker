@@ -42,6 +42,10 @@ async def helpstr(message: types.Message):
         "<b>Hey! Wassup What Can i Do For Yor</b>\n<b>Send /cmds for a list of all commands!</b>\n<b>My Master →@strikerop95</b>\n<b>Bot By @strikermarket</b>" 
     )
     
+@dp.message_handler(commands=['info'], commands_prefix=PREFIX)
+async def info(message: types.Message):
+    await message.answer_chat_action("typing")
+    await message.reply(message.chat.id, text=f"CHAT ID: {message.from_user.id}")
 
 @dp.message_handler(commands=['cmds'], commands_prefix=PREFIX)
 async def helpstr(message: types.Message):
