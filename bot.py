@@ -47,9 +47,10 @@ async def helpstr(message: types.Message):
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "Strikerchecker Commands ─%0A%0A<b>➣ Stripe Charge/Auth [✅]</b>%0AUsage: <code>/chk cc|mm|yy|cvv</code>%0A%0A<b>➣ Check SK Key [✅]</b>%0AUsage: <code>/key sk_live</code>%0A%0A<b>➣ Check Info [✅]</b>%0AUsage: <code>/info</code>%0A%0A<b>➣ Check BIN Info [✅]</b>%0AUsage: <code>/bin xxxxxx</code>%0A%0AContact → <b>Bot By @strikermarket</b>");
+        "Strikerchecker Commands ─%0A%0A<b>➣ Stripe Charge/Auth [✅]</b>%0AUsage: <code>/chk cc|mm|yy|cvv</code>%0A%0A<b>➣ Check SK Key [✅]</b>%0AUsage: <code>/key sk_live</code>%0A%0A<b>➣ Check Info [✅]</b>%0AUsage: <code>/info</code>%0A%0A<b>➣ Check BIN Info [✅]</b>%0AUsage: <code>/bin xxxxxx</code>%0A%0AContact → <b>Bot By @strikermarket</b>"
     )
 
+    
 @dp.message_handler(commands=['tv'], commands_prefix=PREFIX)
 async def tv(message: types.Message):
     tic = time.perf_counter()
