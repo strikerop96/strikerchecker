@@ -35,7 +35,7 @@ rnd = ''.join(random.choices(string.ascii_lowercase +
                                 string.digits, k = N))
 
 
-@dp.message_handler(commands=['start', 'help'], commands_prefix=PREFIX)
+@dp.message_handler(commands=['start'], commands_prefix=PREFIX)
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
