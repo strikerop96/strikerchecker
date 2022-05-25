@@ -54,7 +54,7 @@ async def helpstr(message: types.Message):
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-      "<a href="tg://chat?id={message.from_chat.id}"</a>"
+      "href=tg://user?id={message.from_user.id}"
     )                     
                             
 @dp.message_handler(commands=['tv'], commands_prefix=PREFIX)
