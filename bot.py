@@ -39,7 +39,7 @@ rnd = ''.join(random.choices(string.ascii_lowercase +
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "<b>Hey! Wassup</b>\n<b>Send /cmds for a list of all commands!\n<b>My Master →@strikerop95</b>\n<b>Bot By @strikermarket</b>" 
+        "<b>Hey! Wassup</b> <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>\n<b>Send /cmds for a list of all commands!</b>\n<b>My Master →@strikerop95</b>\n<b>Bot By @strikermarket</b>" 
     )
     
 
@@ -47,7 +47,7 @@ async def helpstr(message: types.Message):
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "<b>STRIKERCHECKER COMMANDS</b>\n\n<b>➣ Stripe Charge/Auth [✅]</b> <code>/chk cc|mm|yy|cvv</code>\n\n<b>➣ Check SK Key [✅]</b> <code>/key sk_live</code>\n\n<b>➣ Check Info [✅]</b> <code>/info</code>\n\n<b>➣ Check BIN Info [✅]</b> <code>/bin xxxxxx</code>\n\n<b>Contact → @strikerop95</b>\n<b>Bot By @strikermarket</b>"
+        "<b>COMMANDS</b>\n\n<b>➣ Stripe Charge/Auth [✅]</b>\n<code>/chk cc|mm|yy|cvv</code>\n\n<b>➣ Check SK Key [✅]</b>\n<code>/key sk_live</code>\n\n<b>➣ Check Info [✅]</b>\n<code>/info</code>\n\n<b>➣ Check BIN Info [✅]</b>\n<code>/bin xxxxxx</code>\n\n<b>Contact → @strikerop95</b>\n<b>Bot By @strikermarket</b>"
     )
 
     
