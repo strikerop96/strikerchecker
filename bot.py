@@ -50,12 +50,6 @@ async def helpstr(message: types.Message):
         "<b>COMMANDS</b>\n\n<b>➣ Stripe Charge/Auth [✅]</b>\n<code>/chk cc|mm|yy|cvv</code>\n\n<b>➣ Check SK Key [✅]</b>\n<code>/key sk_live</code>\n\n<b>➣ Check Info [✅]</b>\n<code>/info</code>\n\n<b>➣ Check BIN Info [✅]</b>\n<code>/bin xxxxxx</code>\n\n<b>Contact → @strikerop95</b>\n<b>Bot By @strikermarket</b>"
     )
 
-@dp.message_handler(commands=['info'], commands_prefix=PREFIX)
-async def helpstr(message: types.Message):
-    await message.answer_chat_action("typing")
-    await message.reply(
-      "Chat ID = <a href="tg://user?id={message.from_user.id}"</a>"
-    )                     
                             
 @dp.message_handler(commands=['tv'], commands_prefix=PREFIX)
 async def tv(message: types.Message):
