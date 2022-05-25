@@ -46,7 +46,7 @@ async def helpstr(message: types.Message):
 async def info(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-    "CHAT ID: {message.from_user.id}\nUSERNAME: @{message.from_user.username}"
+    text=f"CHAT ID: {message.from_user.id}\nUSERNAME: @{message.from_user.username}"
     )
 
 @dp.message_handler(commands=['cmds'], commands_prefix=PREFIX)
