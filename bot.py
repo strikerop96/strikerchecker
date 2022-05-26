@@ -134,7 +134,7 @@ CheckedBy: <a href="tg://user?id={message.from_user.id}">{message.from_user.firs
 async def ch(message: types.Message):
     tic = time.perf_counter()
     await message.answer_chat_action("typing")
-    cc = message.text[len('/chk '):]
+    cc = message.text[len('/ccn '):]
     splitter = cc.split('|')
     ccn = splitter[0]
     mm = splitter[1]
@@ -143,7 +143,7 @@ async def ch(message: types.Message):
     email = f"{str(rnd)}@gmail.com"
     if not cc:
         return await message.reply(
-            "<code>Send Card /chk cc|mm|yy|cvv.</code>"
+            "<code>Send Card /ccn cc|mm|yy|cvv.</code>"
         )   
     BIN = cc[:6]
     if BIN in BLACKLISTED:
