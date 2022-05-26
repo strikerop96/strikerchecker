@@ -130,11 +130,11 @@ CheckedBy: <a href="tg://user?id={message.from_user.id}">{message.from_user.firs
     await message.reply(INFO)
  
 
-@dp.message_handler(commands=['ccn'], commands_prefix=PREFIX)
+@dp.message_handler(commands=['ck'], commands_prefix=PREFIX)
 async def ch(message: types.Message):
     tic = time.perf_counter()
     await message.answer_chat_action("typing")
-    cc = message.text[len('/ccn '):]
+    cc = message.text[len('/ck '):]
     splitter = cc.split('|')
     ccn = splitter[0]
     mm = splitter[1]
@@ -143,7 +143,7 @@ async def ch(message: types.Message):
     email = f"{str(rnd)}@gmail.com"
     if not cc:
         return await message.reply(
-            "<code>Send Card /ccn cc|mm|yy|cvv.</code>"
+            "<code>Send Card /ck cc|mm|yy|cvv.</code>"
         )   
     BIN = cc[:6]
     if BIN in BLACKLISTED:
