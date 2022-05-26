@@ -154,11 +154,23 @@ async def ch(message: types.Message):
     staticData={'data':cc,'accept-encoding' : "gzip, deflate, br","accept-language" : "en-US,en;q=0.9","origin" : "https://www.mrchecker.net","referer" : "https://www.mrchecker.net/card-checker//ccn2/","user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" }
     post=requests.post(url='https://www.mrchecker.net/card-checker//ccn2/api.php',data=staticData)
     if 'Live' in post.text :
-        print(' live   - ',cc)
+       await message.reply(f"""
+✅<b>CC</b>➟ <code>{cc}</code>
+<b>STATUS</b>➟ #ApprovedCCN
+<b>MSG</b>➟ {msg}
+<b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
+<b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+""")
     elif 'Die' in post.text :
-        print(' Die    - ',cc)
+❌<b>CC</b>➟ <code>{cc}</code>
+<b>STATUS</b>➟ Declined
+<b>MSG</b>➟ {msg}
+<b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
+<b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+""")  
     else:
-        print('Unknown - ',cc)
+  print('Unknown - ',cc)
+        
     
 @dp.message_handler(commands=['chk'], commands_prefix=PREFIX)
 async def ch(message: types.Message):
