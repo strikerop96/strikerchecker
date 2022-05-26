@@ -170,8 +170,7 @@ async def ch(message: types.Message):
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
-    else:
-  print('Unknown - ',cc)
+    
         
     
 @dp.message_handler(commands=['chk'], commands_prefix=PREFIX)
