@@ -160,12 +160,13 @@ async def ch(message: types.Message):
       "Accept-Language": "en-US,en;q=0.9"
     }
     
-    card = {
-      "ccn"
-      "mm"
-      "yy"
-      "cvv"
-   }
+     card = {
+       ccn,
+       mm
+       yy
+       cvv
+     }
+      
     
     post = session.post(f"https://www.mrchecker.net/card-checker//ccn2/api.php",
                      data=card, headers=headerss)
