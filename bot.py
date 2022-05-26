@@ -161,10 +161,10 @@ async def ch(message: types.Message):
       
     card = ccn|mm|yy|cvv
     
-       post = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
+    ad = session.post("https://new-integration.adblockplus.org/",
                      data=card, headers=headerss)
     
-    if 'Live' in post.text :
+    if 'Live' in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
@@ -172,10 +172,10 @@ async def ch(message: types.Message):
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
-    elif "Unrecognized request URL" in rx.text:
+    elif "Unrecognized request URL" in ad.text:
     await message.reply("Check the validity of a credit card")
     
-    elif 'Die' in post.text :
+    elif 'Die' in ad.text :
       await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ Dead
