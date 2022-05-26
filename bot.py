@@ -153,6 +153,7 @@ async def ch(message: types.Message):
       
     staticData={'data':cc,'accept-encoding' : "gzip, deflate, br","accept-language" : "en-US,en;q=0.9","origin" : "https://www.mrchecker.net","referer" : "https://www.mrchecker.net/card-checker//ccn2/","user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" }
     post=requests.post(url='https://www.mrchecker.net/card-checker//ccn2/api.php',data=staticData)
+    
     if 'Live' in post.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
@@ -162,8 +163,9 @@ async def ch(message: types.Message):
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
     elif 'Die' in post.text :
+      await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
-<b>STATUS</b>➟ Declined
+<b>STATUS</b>➟ Dead
 <b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
