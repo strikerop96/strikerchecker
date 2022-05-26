@@ -152,17 +152,16 @@ async def ch(message: types.Message):
             )
       
     headerss = {
-      "User-Agent": "Mozilla/5.0 (Linux; Android 10) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.77 Mobile Safari/537.36",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "Accept": "application/json",
-      "Origin": "https://www.mrchecker.net",
-      "Referer": "https://www.mrchecker.net/card-checker//ccn2/",
-      "Accept-Language": "en-US,en;q=0.9"
+      'accept-encoding' : "gzip, deflate, br",
+      "accept-language" : "en-US,en;q=0.9",
+      "origin" : "https://www.mrchecker.net",
+      "referer" : "https://www.mrchecker.net/card-checker//ccn2/",
+      "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
     card = ccn|mm|yy|cvv
     
-    post = session.post(f"https://www.mrchecker.net/card-checker//ccn2/api.php",
+       post=requests.post(url="https://www.mrchecker.net/card-checker//ccn2/api.php",
                      data=card, headers=headerss)
     
     if 'Live' in post.text :
