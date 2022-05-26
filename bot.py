@@ -128,7 +128,37 @@ CheckedBy: <a href="tg://user?id={message.from_user.id}">{message.from_user.firs
 ╘═════════
 """
     await message.reply(INFO)
-        
+ 
+
+@dp.message_handler(commands=['ccn'], commands_prefix=PREFIX)
+async def ch(message: types.Message):
+    tic = time.perf_counter()
+    await message.answer_chat_action("typing")
+    cc = message.text[len('/chk '):]
+    splitter = cc.split('|')
+    ccn = splitter[0]
+    mm = splitter[1]
+    yy = splitter[2]
+    cvv = splitter[3]
+    email = f"{str(rnd)}@gmail.com"
+    if not cc:
+        return await message.reply(
+            "<code>Send Card /chk cc|mm|yy|cvv.</code>"
+        )   
+    BIN = cc[:6]
+    if BIN in BLACKLISTED:
+        return await message.reply(
+            "<b>BLACKLISTED BIN</b>"
+            )
+      
+    staticData={'data':cc,'accept-encoding' : "gzip, deflate, br","accept-language" : "en-US,en;q=0.9","origin" : "https://www.mrchecker.net","referer" : "https://www.mrchecker.net/card-checker//ccn2/","user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36" }
+    post=requests.post(url='https://www.mrchecker.net/card-checker//ccn2/api.php',data=staticData)
+    if 'Live' in post.text :
+        print(' live   - ',cc)
+    elif 'Die' in post.text :
+        print(' Die    - ',cc)
+    else:
+        print('Unknown - ',cc)
     
 @dp.message_handler(commands=['chk'], commands_prefix=PREFIX)
 async def ch(message: types.Message):
