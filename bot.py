@@ -155,44 +155,37 @@ async def ch(message: types.Message):
     heads = {
       "accept-encoding" : "gzip, deflate, br",
       "accept-language" : "en-US,en;q=0.9",
-      "Content-Type": "application/x-www-form-urlencoded, text/html, charset=UTF-8",
+      "Accept": "application/json, text/plain, */*",
+      "Content-Type": "application/x-www-form-urlencoded",
       "origin" : "https://www.mrchecker.net",
       "referer" : "https://www.mrchecker.net/card-checker/ccn2/",
       "Sec-Fetch-Dest": "empty",
       "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
-    ad = requests.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
+    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=heads)
     res = ad.json()
-    msg = res["error"]["message"]
     toc = time.perf_counter()
     
-    Live = res["Live"]
-    Die = res["Die"]
-    Unknown = res["Unknown"]
-    
-    if Live in ad.text :
+    if "Live" in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
-<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
-    elif Die in ad.text :
+    elif "Die" in ad.text :
       await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #DeadCCN
-<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
-    elif Unknown in ad.text :
+    elif "Unknown" in ad.text :
        await message.reply(f"""
  ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #Unknown
-<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)       
