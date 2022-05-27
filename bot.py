@@ -150,11 +150,11 @@ async def ch(message: types.Message):
         return await message.reply(
             "<b>BLACKLISTED BIN</b>"
             )
-      
+     
     heads = {
       "accept-encoding" : "gzip, deflate, br",
       "accept-language" : "en-US,en;q=0.9",
-      "Content-Type": "application/x-www-form-urlencoded, text/html, charset=UTF-8",
+      "Content-Type": "application/x-www-form-urlencoded",
       "origin" : "https://www.mrchecker.net",
       "referer" : "https://www.mrchecker.net/card-checker/ccn2/",
       "Sec-Fetch-Dest": "empty",
@@ -163,27 +163,34 @@ async def ch(message: types.Message):
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
                      data=cc, headers=heads)
-    
+    res = rx.json()
+    msg = res["error"]["message"]
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
-       res = ad.json()
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
-    elif 'Unknown' in ad.text :
-      res = ad.json()
-      await message.reply("UNKNOWN CARDS")
-    else:
-        await message.reply(f"""
+    elif 'Die' in ad.text :
+      await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #DeadCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
+    elif 'Unknown' in ad.text :
+       await message.reply(f"""
+ ❌<b>CC</b>➟ <code>{cc}</code>
+<b>STATUS</b>➟ #Unknown
+<b>MSG</b>➟ {msg}
+<b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
+<b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+""")       
         
     
 @dp.message_handler(commands=['chk'], commands_prefix=PREFIX)
