@@ -162,7 +162,7 @@ async def ch(message: types.Message):
     }
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
-                     data=cc, headers=headerss)
+                     data=cc)
     
     if 'Live' in ad.text :
        await message.reply(f"""
