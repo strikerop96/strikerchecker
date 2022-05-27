@@ -164,7 +164,7 @@ async def ch(message: types.Message):
       
     ad = requests.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=heads)
-    res = json.loads(ad.text)
+    res = json.loads(ad.json)
     msg = res["error"]["message"]
     toc = time.perf_counter()
     
