@@ -167,6 +167,7 @@ async def ch(message: types.Message):
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
+       res = ad.json()
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
@@ -174,6 +175,7 @@ async def ch(message: types.Message):
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
     elif 'Unknown' in ad.text :
+      res = ad.json()
       await message.reply("UNKNOWN CARDS")
     else:
         await message.reply(f"""
