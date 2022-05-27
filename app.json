@@ -17,7 +17,7 @@
     "SKKEY": {
       "description": "Your SK key, as a string.",
       "value": "",
-      "required": true
+      "required": false
      }
    }
   }
