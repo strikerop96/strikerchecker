@@ -163,7 +163,7 @@ async def ch(message: types.Message):
     }
       
     
-     ad = session.post("https://www.mrchecker.net/card-checker//ccn2/api.php/",
+     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
                      data=cc, headers=headerss)
     
     if 'Live' in ad.text :
