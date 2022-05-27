@@ -154,7 +154,7 @@ async def ch(message: types.Message):
     heads = {
       "accept-encoding" : "gzip, deflate, br",
       "accept-language" : "en-US,en;q=0.9",
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded, text/html, charset=UTF-8",
       "origin" : "https://www.mrchecker.net",
       "referer" : "https://www.mrchecker.net/card-checker/ccn2/",
       "Sec-Fetch-Dest": "empty",
@@ -162,9 +162,8 @@ async def ch(message: types.Message):
     }
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
-                     data=cc, headers=heads)
+                     payload=cc, headers=heads)
     res = ad.json()
-    msg = res["error"]["message"]
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
