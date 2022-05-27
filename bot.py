@@ -168,7 +168,11 @@ async def ch(message: types.Message):
     msg = res["error"]["message"]
     toc = time.perf_counter()
     
-    if 'Live' in ad.text :
+    Live = res["Live"]
+    Die = res["Die"]
+    Unknown = res["Unknown"]
+    
+    if Live in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
@@ -176,7 +180,7 @@ async def ch(message: types.Message):
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
-    elif 'Die' in ad.text :
+    elif Die in ad.text :
       await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #DeadCCN
@@ -184,7 +188,7 @@ async def ch(message: types.Message):
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
-    elif 'Unknown' in ad.text :
+    elif Unknown in ad.text :
        await message.reply(f"""
  ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #Unknown
