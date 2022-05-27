@@ -151,8 +151,11 @@ async def ch(message: types.Message):
             "<b>BLACKLISTED BIN</b>"
             )
       
+    ccs = {
+      ccn | mm | yy | cvv
+    }
+    
     headerss = {
-      "Accept": "*/*",
       "accept-encoding" : "gzip, deflate, br",
       "accept-language" : "en-US,en;q=0.9",
       "Content-Type": "application/x-www-form-urlencoded",
@@ -163,7 +166,7 @@ async def ch(message: types.Message):
     }
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
-                     data=cc, headers=headerss)
+                     data=ccs, headers=headerss)
     
     if 'Live' in ad.text :
        await message.reply(f"""
