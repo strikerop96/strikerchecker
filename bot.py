@@ -162,7 +162,7 @@ async def ch(message: types.Message):
       "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
-    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
+    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=headerss)
     
     if 'Live' in ad.text :
