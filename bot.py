@@ -164,13 +164,15 @@ async def ch(message: types.Message):
       
     ad = requests.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=heads)
-    
+    res = response.json(ad.text)
+    msg = res["error"]["message"]
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
@@ -178,6 +180,7 @@ async def ch(message: types.Message):
       await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #DeadCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
@@ -185,6 +188,7 @@ async def ch(message: types.Message):
        await message.reply(f"""
  ❌<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #Unknown
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)       
