@@ -162,7 +162,7 @@ async def ch(message: types.Message):
     }
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/",
-                     data=cc, header=heads)
+                     data=cc, headers=heads)
     
     toc = time.perf_counter()
     res = ad.json()
