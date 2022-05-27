@@ -165,7 +165,7 @@ async def ch(message: types.Message):
                      data=cc, headers=heads)
     
     toc = time.perf_counter()
-    res = ad.json()
+    
     if 'Live' in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
