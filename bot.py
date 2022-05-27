@@ -164,7 +164,7 @@ async def ch(message: types.Message):
       
     ad = requests.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=heads)
-    res = json.load(ad.text)
+    
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
