@@ -4,6 +4,7 @@ import requests
 import time
 import string
 import random
+import json
 
 from aiogram import Bot, Dispatcher, executor, types
 from bs4 import BeautifulSoup
@@ -163,7 +164,7 @@ async def ch(message: types.Message):
       
     ad = requests.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
                      data=cc, headers=heads)
-    res = ad.json()
+    res = json.load(ad.text)
     toc = time.perf_counter()
     
     if 'Live' in ad.text :
