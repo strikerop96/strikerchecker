@@ -163,7 +163,7 @@ async def ch(message: types.Message):
       "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
-    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php",
+    ad = session.post(f"https://www.mrchecker.net/card-checker/ccn2/api.php/",
                      data=cc, headers=heads)
     res = ad.json()
     toc = time.perf_counter()
@@ -174,6 +174,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #ApprovedCCN
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)
     elif "Die" in ad.text :
       await message.reply(f"""
@@ -181,6 +182,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #DeadCCN
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)  
     elif "Unknown" in ad.text :
        await message.reply(f"""
@@ -188,6 +190,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #Unknown
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)       
         
     
@@ -292,6 +295,7 @@ async def ch(message: types.Message):
 <b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)
     elif "Unrecognized request URL" in rx.text:
         await message.reply("[UPDATE] PROXIES ERROR")
@@ -301,6 +305,7 @@ async def ch(message: types.Message):
 <b>STATUS</b>➟ #ApprovedCVV
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)
     else:
         await message.reply(f"""
@@ -309,6 +314,7 @@ async def ch(message: types.Message):
 <b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
+<b>Bot:</b> @strikermarket
 """)  
     
     
