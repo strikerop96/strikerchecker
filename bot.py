@@ -152,7 +152,7 @@ async def ch(message: types.Message):
             )
       
     ccs = {
-      ccn | mm | yy | cvv
+      int(ccn) | int(mm) | int(yy) | int(cvv)
     }
     
     headerss = {
