@@ -154,17 +154,18 @@ async def ch(message: types.Message):
     heads = {
       "accept-encoding" : "gzip, deflate, br",
       "accept-language" : "en-US,en;q=0.9",
-      "Content-Type": "application/x-www-form-urlencoded",
+      "Content-Type": "application/x-www-form-urlencoded, text/html, charset=UTF-8",
       "origin" : "https://www.mrchecker.net",
       "referer" : "https://www.mrchecker.net/card-checker/ccn2/",
       "Sec-Fetch-Dest": "empty",
       "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
-    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/{cc}")
+    ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/"
+                     data=cc, header=heads)
     
     toc = time.perf_counter()
-    
+    res = ad.json()
     if 'Live' in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
