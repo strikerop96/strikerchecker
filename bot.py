@@ -163,23 +163,28 @@ async def ch(message: types.Message):
       
     ad = session.post("https://www.mrchecker.net/card-checker/ccn2/api.php/{cc}/",
                      headers=heads)
+    res = ad.json()
+    msg = res["error"]["message"]
+    toc = time.perf_counter()
     
     if 'Live' in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
 <b>STATUS</b>➟ #ApprovedCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)
-    elif 'Die' in ad.text :
-      await message.reply(f"""
+    elif 'Unknown' in ad.text :
+      await message.reply("UNKNOWN CARDS")
+    else:
+        await message.reply(f"""
 ❌<b>CC</b>➟ <code>{cc}</code>
-<b>STATUS</b>➟ Dead
+<b>STATUS</b>➟ #DeadCCN
+<b>MSG</b>➟ {msg}
 <b>TOOK:</b> <code>{toc - tic:0.4f}</code>(s)
 <b>CHKBY</b>➟ <a href="tg://user?id={message.from_user.id}">{message.from_user.first_name}</a>
 """)  
-    else:
-        await message.reply("Error❌: UNKNOWN card")
         
     
 @dp.message_handler(commands=['chk'], commands_prefix=PREFIX)
