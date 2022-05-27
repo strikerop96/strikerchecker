@@ -163,11 +163,10 @@ async def ch(message: types.Message):
       "user-agent" : "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/89.0.4389.114 Safari/537.36"
     }
       
-    ad = session.post(f"https://www.mrchecker.net/card-checker/ccn2/api.php/",
+    ad = requests.get("https://www.mrchecker.net/card-checker/ccn2/api.php/",
                      data=cc, headers=heads)
-    res = ad.json()
     toc = time.perf_counter()
-    
+    res = json.loads(ad.text)
     if "Live" in ad.text :
        await message.reply(f"""
 ✅<b>CC</b>➟ <code>{cc}</code>
