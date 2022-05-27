@@ -151,9 +151,7 @@ async def ch(message: types.Message):
             "<b>BLACKLISTED BIN</b>"
             )
       
-    ccs = {
-      int(ccn) | int(mm) | int(yy) | int(cvv)
-    }
+    ccs = {(ccn)|(mm)|(yy)|(cvv)}
     
     headerss = {
       "accept-encoding" : "gzip, deflate, br",
